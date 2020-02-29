@@ -1,1 +1,5 @@
-The information about dataset
+The discrete SCNA profiles of genes were saved in the cnv_M.RData
+The expression profiles of PGs were saved in the gene_M.Rdata
+The expression profiles of lncRNAs were saved in the lnc_M.Rdata
+The expression profiles of miRNAs were saved in the mir_M.Rdata
+The miRNA-target interactions were saved in the mir_ceRNA_list.Rdata
