@@ -1,1 +1,43 @@
+This example for demostrating "Dissecting-the-functional-mechanism-of-Somatic-copy-number-alterations"
 
+## "D:/LGG" is the folder for storaging the results
+## Dname: the disease name
+Dname="LGG" 
+
+##input: the folder where the programs are storaged 
+input="D:/"
+
+##freq_thr1: the threshold for frequencies of SCNAs
+freq_thr1=0.1
+
+##exp_thr: the thrshold of mean expression value
+exp_thr=0.1
+
+##freq_thr2: the minimum undetected frequency
+freq_thr2=0.3
+
+##p_thr: the significance of differential expression
+p_thr=0.05
+
+##min_thr: the minimum number of samples needed for constructing dynamic ceRNA network
+min_thr=5
+
+##cthr1: the thrshold of correlation coefficients between miRNA and candidate genes
+cthr1=0
+##cthr2: the thrshold of correlation coefficients between miRNA and ceRNAs
+cthr2=0
+##cthr3: the thrshold of correlation coefficients between ceRNAs and candidate genes
+
+cthr3=0
+##pthr: : the thrshold of FDR for correlation coefficients
+p_thr=0.05
+
+source("D:/lncRNA_programs.r")
+all_sig_ceRNAs<-driver_lnc(Dname,input,freq_thr1,exp_thr,freq_thr2,p_thr,min_thr,cthr1,cthr2,cthr3)
+
+######################################################
+
+all_sig_ceRNAs<-extract_notnull(all_sig_ceRNAs)
+##删除自己到自己的ceRNA对
+all_sig_ceRNAs<-remove_self(all_sig_ceRNAs)
+save(all_sig_ceRNAs,file="all_sig_ceRNAs.Rdata")
